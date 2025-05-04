@@ -1,4 +1,4 @@
-export type FeedbackItem = {
+export type TFeedbackItem = {
   id: number;
   upvoteCount: number;
   badgeLetter: string;
