@@ -6,6 +6,7 @@ type FeedbackFormProps = {
 };
 export default function FeedbackForm({ onAddToList }: FeedbackFormProps) {
   const [text, setText] = useState('');
+  const [status, setStatus] = useState<'idle' | 'valid' | 'invalid'>('idle');
   const charCount = MAX_CHARACTERS - text.length;
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -13,15 +14,28 @@ export default function FeedbackForm({ onAddToList }: FeedbackFormProps) {
     if (newText.length > MAX_CHARACTERS) {
       return;
     }
+    setStatus('idle');
     setText(newText);
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const isGood = text.includes('#') && text.length > 5;
+    setStatus(isGood ? 'valid' : 'invalid');
+    if (!isGood) return;
     onAddToList(text);
     setText('');
+    setTimeout(() => {
+      setStatus('idle');
+    }, 2000);
   };
+
   return (
-    <form onSubmit={handleSubmit} className='form'>
+    <form
+      onSubmit={handleSubmit}
+      className={`form ${status === 'valid' ? 'form--valid' : ''} ${
+        status === 'invalid' ? 'form--invalid' : ''
+      }`}
+    >
       <textarea
         value={text}
         onChange={handleChange}
