@@ -495,9 +495,8 @@ form button span::selection {
 
 /* HASHTAGS */
 .hashtags {
-  position: absolute;
-  right: -137px;
-  top: 0px;
+  padding-left: 1rem;
+  max-width: 715px;
 }
 
 .hashtags li {
@@ -590,10 +589,14 @@ h1 > span {
   .app {
     flex-direction: column-reverse;
     height: initial;
+    align-items: center;
   }
 
   .hashtags {
-    display: none;
+    display: flex;
+    gap: 0.4rem;
+    padding: 1rem 0;
+    flex-wrap: wrap;
   }
 
   .footer {
@@ -612,14 +615,12 @@ h1 > span {
     padding-bottom: 20px;
     align-items: initial;
   }
-
-  .container {
-    width: 100vw;
-  }
-
   .app {
-    width: 100%;
+    /* width: 100%; */
     border-radius: 0;
+  }
+  .container {
+    width: 95vw;
   }
 
   .feedback__badge {
