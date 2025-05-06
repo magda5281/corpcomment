@@ -11,6 +11,9 @@ type Store = {
   selectCompany: (company: string) => void;
   fetchFeedbackItems: () => Promise<void>;
 };
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const useFeedbackItemsStore = create<Store>((set, get) => ({
   feedbackItems: [],
   isLoading: false,
@@ -46,21 +49,18 @@ export const useFeedbackItemsStore = create<Store>((set, get) => ({
       daysAgo: 0,
     };
 
-    // setFeedbackItems([...feedbackItems, newItem]);
     set((state) => ({
       feedbackItems: [...state.feedbackItems, newItem],
     }));
-    await fetch(
-      'https://bytegrad.com/course-assets/projects/corpcomment/api/feedbacks',
-      {
-        method: 'POST',
-        body: JSON.stringify(newItem),
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      }
-    );
+
+    await fetch(`${API_BASE_URL}/feedbacks`, {
+      method: 'POST',
+      body: JSON.stringify(newItem),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
   },
   selectCompany: (company: string) => {
     set({ selectedCompany: company });
@@ -68,10 +68,9 @@ export const useFeedbackItemsStore = create<Store>((set, get) => ({
   fetchFeedbackItems: async () => {
     set(() => ({ errorMessage: '' }));
     set(() => ({ isLoading: true }));
+
     try {
-      const response = await fetch(
-        'https://bytegrad.com/course-assets/projects/corpcomment/api/feedbacks'
-      );
+      const response = await fetch(`${API_BASE_URL}/feedbacks`);
       if (!response.ok) {
         throw new Error();
       }
