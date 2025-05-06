@@ -337,7 +337,6 @@ form button span::selection {
 .feedback {
   display: grid;
   grid-template-columns: 40px 85px 6fr 1fr;
-  //grid-template-columns: 0.5fr 1fr 6fr 1fr;
   align-items: center;
   height: 82px;
   padding-right: 35px;
