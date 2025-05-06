@@ -1,6 +1,6 @@
 import { createContext, useMemo, useState } from 'react';
-import { TFeedbackItem } from '../../types';
-import { useFeedbackItems } from '../../lib/hooks';
+import { TFeedbackItem } from '../../src/types';
+import { useFeedbackItems } from '../hooks';
 
 type FeedbackItemsContextProvider = {
   children: React.ReactNode;
