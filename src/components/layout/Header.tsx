@@ -1,12 +1,11 @@
+import { useFeedbackItemsContext } from '../../lib/hooks';
 import FeedbackForm from '../feedback/FeedbackForm';
 import Logo from '../Logo';
 import PageHeading from '../PageHeading';
 import Pattern from '../Pattern';
 
-type HeadersProps = {
-  handleAddToList: (text: string) => void;
-};
-export default function Header({ handleAddToList }: HeadersProps) {
+export default function Header() {
+  const { handleAddToList } = useFeedbackItemsContext();
   return (
     <header>
       <Pattern />
