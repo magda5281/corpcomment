@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className='footer'>
       <small>
         <p>
-          &copy; Copyright by Magda Gozdalik. Intended for learning or your
+          &copy; Copyright by Magda Gozdalik. Educational project or your
           portfolio.
         </p>
         <p>
