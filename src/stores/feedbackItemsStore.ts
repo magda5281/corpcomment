@@ -1,7 +1,17 @@
 import { create } from 'zustand';
 import { TFeedbackItem } from '../types';
-
-export const useFeedbackItemsStore = create((set, get) => ({
+type Store = {
+  feedbackItems: TFeedbackItem[];
+  isLoading: boolean;
+  errorMessage: string;
+  selectedCompany: string;
+  getCompanyList: () => string[];
+  getFilteredFeedbackItems: () => TFeedbackItem[];
+  addItemToList: (text: string) => Promise<void>;
+  selectCompany: (company: string) => void;
+  fetchFeedbackItems: () => Promise<void>;
+};
+export const useFeedbackItemsStore = create<Store>((set, get) => ({
   feedbackItems: [],
   isLoading: false,
   errorMessage: '',
