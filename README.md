@@ -10,7 +10,7 @@ CorpComment is a simple feedback‐collector app built with Vite, React and Type
 
 CorpComment is deployed to **Vercel**.
 
-🔗 **<a href="" target="_blank">CorpComment</a>**
+🔗 **<a href="https://corpcomment-five.vercel.app/" target="_blank">CorpComment</a>**
 
 ## 🤔 What Is It?
 
