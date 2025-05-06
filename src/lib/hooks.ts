@@ -42,5 +42,6 @@ export function useFeedbackItems() {
     feedbackItems,
     isLoading,
     errorMessage,
+    setFeedbackItems,
   };
 }

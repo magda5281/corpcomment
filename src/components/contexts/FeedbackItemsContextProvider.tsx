@@ -12,6 +12,7 @@ type TFeedbackItemsContext = {
   companyList: string[];
   handleAddToList: (text: string) => void;
   handleSelectCompany: (company: string) => void;
+  setFeedbackItems: React.Dispatch<React.SetStateAction<TFeedbackItem[]>>;
 };
 
 export const FeedbackItemsContext = createContext<TFeedbackItemsContext | null>(
@@ -20,7 +21,8 @@ export const FeedbackItemsContext = createContext<TFeedbackItemsContext | null>(
 export default function FeedbackItemsContextProvider({
   children,
 }: FeedbackItemsContextProvider) {
-  const { feedbackItems, isLoading, errorMessage } = useFeedbackItems();
+  const { feedbackItems, isLoading, errorMessage, setFeedbackItems } =
+    useFeedbackItems();
   const [selectedCompany, setSelectedCompany] = useState('');
 
   const companyList = useMemo(() => {
@@ -76,12 +78,13 @@ export default function FeedbackItemsContextProvider({
   return (
     <FeedbackItemsContext.Provider
       value={{
+        filteredFeedbackItems,
         isLoading,
         errorMessage,
         companyList,
         handleAddToList,
-        filteredFeedbackItems,
         handleSelectCompany,
+        setFeedbackItems,
       }}
     >
       {children}
